@@ -1,6 +1,6 @@
 const Usuarios = {
     model: '/usuarios',
-     API : 'https://crudcrud.com/api/d370416b0f934263afe4c75e2ce45352',
+     API : 'https://crudcrud.com/api/7125adbd965f46bb9e07bb055e2b584d',
     RAND_SIZE : 1000000000,
 
    todos: function (cb){
@@ -167,28 +167,28 @@ const UsuarioComp = Vue.component('usuarios-component',{
     <hr>
     <div id="usuarios--form">
         <form action="">
-            <input type="text" placeholder="Nombre" v-model="form.nombre">
+            <input type="text" placeholder="Nombre" v-model="form.nombre" >
             <br>
-            <input type="text" placeholder="Apellido" v-model="form.apellido">
+            <input type="text"  placeholder="Apellido" v-model="form.apellido" >
             <br>
-            <input type="password" placeholder="Clave" v-model="form.clave">
+            <input type="password"  placeholder="Clave" v-model="form.clave" >
             <br>
-            <input type="email" placeholder="Email" v-model="form.email">
+            <input type="email" placeholder="usario@example.com" v-model="form.email" pattern=".+@globex\.com" size="15" required>
             <br>
-            Sexo:<select name="" v-model="form.sexo" >
+            Sexo:<select name="" v-model="form.sexo" placeholder="selecione" >
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
                 <option value="otro">Otro</option>
 
             </select>
             <br>
-            <input type="number" placeholder="Edad" v-model="form.edad">
+            <input type="number" placeholder="Edad" v-model="form.edad" >
             <br>
-            <input type="number" placeholder="altura" v-model="form.altura"> cm
+            <input type="number" placeholder="altura" v-model="form.altura" > cm
             <br> Activo:
-            <select name="" v-model="form.activo" placeholder="">
-                <option value="si">SI</option>
-                <option value="no">NO</option>
+            <select name="" v-model="form.activo" placeholder="" >
+                <option value="SI">SI</option>
+                <option value="NO">NO</option>
 
             </select>
                       
