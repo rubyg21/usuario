@@ -5,30 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.5.4/vue-router.js" integrity="sha512-sKe157HhBiCqOCnhlr0hwOi12s27R+eCZTuYtvYOQWrPugnXEbJPQppm79oTI5ol+GGWjGLkoTmeMzE4uAKvxw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Usuarios</title>
+   <link rel="stylesheet" href="style.css">
+
+      <title>Prueba Frontend</title>
 </head>
 <body>
     <div id="app">
-        <div class="menu">
-            <!-- Aca va el componente de menu -->
-            <menu-component></menu-component>
-        </div>
-        <div class="appComponente">
+        <h1>{{mensaje}}</h1>
 
-            <usuarios-component v-if="appNumber === 0"></usuarios-component>
-
-        </div>
+        <menu-component></menu-component>
+        <hr>
+        <router-view></router-view>
     </div>
-    <p>Probrando</p>
+    <!-- Servicios -->
+
+    <script src="services/usuarios.services.js"></script>
     <!-- Componentes -->
-    <script src="menu.component.js"></script>
-    <script src="usuarios.components.js"></script>
+
+    <script src="components/usuarios.components.js"></script>
+    <script src="components/menu.components.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
-
 
 <!-- -> Necesitamos correr nuestra APP en Vue en un HTTP Server
 -> (si tenemos nodejs instalado) npm i -g http-server

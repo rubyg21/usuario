@@ -1,53 +1,6 @@
-const Usuarios = {
-    model: '/usuarios',
-     API : 'https://crudcrud.com/api/7125adbd965f46bb9e07bb055e2b584d',
-    RAND_SIZE : 1000000000,
 
-   todos: function (cb){
-       const url = this.API + this.model
-       axios.get(url).then( response => {
-           // Me devuelve una funcion que tiene un array
-           cb(response.data)
-       }).catch( err => {
-           cb({
-               error: `${err}`
-           })
-       })
-   },
-   crear: function (obj, cb){
-       const url = this.API + this.model
-       axios.post(url, obj).then( response => {
-           cb(response.data)
-       }).catch( err => {
-           cb({
-               error: `${err}`
-           })
-       })
-   },
-   eliminar: function (id, cb){
-       const url = this.API + this.model + '/' + id
-       axios.delete(url).then( response => {
-           // Me devuelve una funcion que tiene un array
-           cb(response.data)
-       }).catch( err => {
-           cb({
-               error: `${err}`
-           })
-       })
-   },
-   editar: function (id, obj, cb){
-       const url = this.API + this.model + '/' + id
-       axios.put(url, obj).then( response => {
-           cb(response.data)
-       }).catch( err => {
-           cb({
-               error: `${err}`
-           })
-       })
-   },
-}
 
-const UsuarioComp = Vue.component('usuarios-component',{
+const UsuariosComp = Vue.component('usuarios-component',{
     data:function(){
         return{
             usuarios: [],
@@ -56,7 +9,7 @@ const UsuarioComp = Vue.component('usuarios-component',{
                 nombre: null,
                 apellido: null,
                 clave: null,
-                sexo: null,
+                genero: null,
                 edad: null,
                 altura: null,
                 activo: null,
@@ -74,7 +27,7 @@ const UsuarioComp = Vue.component('usuarios-component',{
                 nombre: null,
                 apellido: null,
                 clave: null,
-                sexo: null,
+                genero: null,
                 edad: null,
                 altura: null,
                 activo: null,
@@ -120,7 +73,8 @@ const UsuarioComp = Vue.component('usuarios-component',{
             this.form = {...usuario}
         },
         obtenerFecha: function(){
-           return this.fecha = new Date().toLocaleDateString()
+            const date = new Date()
+            return this.fecha = date.toLocaleString()//.toLocaleDateString() 
         }
     },
     mounted: function (){
@@ -128,45 +82,65 @@ const UsuarioComp = Vue.component('usuarios-component',{
         this.obtenerTodos()
     },
     template:`
+  
     <div id="usuarios--component">
     <div id="usuarios--listado">
+    
         <table>
             <thead>
+            
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
-                    <th>Sexo</th>
+                    <th>Clave</th>
+                    <th>Genero</th>
                     <th>Edad</th>
                     <th>Altura </th>
                     <th>Activo</th>
                     <th>Fecha de creado</th>
-                    <th></th>
+                    <th> </th>
+                   
                 </tr>
+                
             </thead>
+            
             <tbody>
+            
                 <tr v-for="(usuario, i) in usuarios" :key="i">
                     <td>{{usuario._id}}</td>
                     <td>{{usuario.nombre}}</td>
                     <td>{{usuario.apellido}}</td>
                     <td>{{usuario.email}}</td>
-                    <td>{{usuario.sexo}}</td>
-                    <td>{{usuario.edad}}</td>
+                    <td>{{usuario.clave}}</td>
+                    <td>{{usuario.genero}}</td>
+                    <td>{{usuario.edad}} años</td>
                     <td>{{usuario.altura}} cm</td>
                     <td>{{usuario.activo}}</td>
                     <td>{{usuario.fecha}}</td>
                     <td>
-                        <button @click="editar(usuario)">Editar</button>
-                        <button @click="eliminar(usuario._id)">Eliminar</button>
+                        <button class="btn-editar" @click="editar(usuario)">Editar</button>
+                        <button class="btn-eliminar" @click="eliminar(usuario._id)">Eliminar</button>
+                       
                     </td>
+                   
                 </tr>
+               
+                               
             </tbody>
+            
         </table>
+        <hr>
+        
     </div>
-    <hr>
+    
     <div id="usuarios--form">
         <form action="">
+        Ingrese sus datos:
+        <br>
+        <br>
+        
             <input type="text" placeholder="Nombre" v-model="form.nombre" >
             <br>
             <input type="text"  placeholder="Apellido" v-model="form.apellido" >
@@ -175,28 +149,34 @@ const UsuarioComp = Vue.component('usuarios-component',{
             <br>
             <input type="email" placeholder="usario@example.com" v-model="form.email" pattern=".+@globex\.com" size="15" required>
             <br>
-            Sexo:<select name="" v-model="form.sexo" placeholder="selecione" >
+            Genero:<select name="" v-model="form.genero" placeholder="selecione" >
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
                 <option value="otro">Otro</option>
 
             </select>
             <br>
-            <input type="number" placeholder="Edad" v-model="form.edad" >
+            <input type="number" placeholder="Edad" v-model="form.edad" > años
             <br>
             <input type="number" placeholder="altura" v-model="form.altura" > cm
             <br> Activo:
             <select name="" v-model="form.activo" placeholder="" >
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
-
+                <hr>
             </select>
                       
             <br>
-            <button type="button" @click="guardar()">Guardar</button>
+            <br>
+           
+            <button  class="btn-guardar" type="button" @click="guardar()">Guardar</button>
         </form>
         </div>
+
 </div>
-        
     `
 })
+
+// obtenerFecha: function(){
+//     return this.fecha = new Date().toLocaleDateString() 
+//  }

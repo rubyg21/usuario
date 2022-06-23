@@ -2,20 +2,62 @@
     body {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 12px;
+        color: rgb(102, 102, 102);
     }
-    #app {
-        display: flex;
-    }
-    .menu {
-        flex: 1;
-    }
+
+
     .appComponente {
         flex: 3;
         border: 1px solid;
         border-radius: 3px;
         padding: 1rem;
     }
-    .completado {
-        text-decoration: line-through;
-    }
+
+}
+
+.btn-eliminar{
+    background-color: #f71d00;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 2px;
+}
+.btn-editar{
+    background-color: #e68b03; 
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 2px;
+}
+.btn-guardar{
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 2px;
+}
+
+.btn-eliminar:hover{
+    background-color: #a51806;
+
+}
+.btn-editar:hover{
+    background-color: #925904; 
+
+}
+.btn-guardar:hover{
+    background-color: #1b691e; 
+
 }
